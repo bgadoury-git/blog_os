@@ -183,13 +183,15 @@ macro_rules! println {
     () => ($crate::print!("\n"));
     ([$fg:expr, $bg:expr, $blink:expr]) => ($crate::print!([$fg, $bg, $blink], "\n"));
     ([$fg:expr, $bg:expr]) => ($crate::print!([$fg, $bg, false], "\n"));
-    ([$fg:expr, $bg:expr, $blink:expr], $fmt:expr $(, $arg:tt)*) => {
+    
+    // Changed $arg:tt to $arg:expr and added optional trailing comma $(,)? support
+    ([$fg:expr, $bg:expr, $blink:expr], $fmt:expr $(, $arg:expr)* $(,)?) => {
         $crate::print!([$fg, $bg, $blink], concat!($fmt, "\n") $(, $arg)*)
     };
-    ([$fg:expr, $bg:expr], $fmt:expr $(, $arg:tt)*) => {
+    ([$fg:expr, $bg:expr], $fmt:expr $(, $arg:expr)* $(,)?) => {
         $crate::print!([$fg, $bg, false], concat!($fmt, "\n") $(, $arg)*)
     };
-    ($fmt:expr $(, $arg:tt)*) => {
+    ($fmt:expr $(, $arg:expr)* $(,)?) => {
         $crate::print!(concat!($fmt, "\n") $(, $arg)*)
     };
 }
