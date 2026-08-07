@@ -1,0 +1,17 @@
+# Memory configuration (32 MB)
+megs: 32
+
+# BIOS and VGA BIOS paths
+romimage: file="C:\Program Files\Bochs-3.0\BIOS-bochs-latest"
+vgaromimage: file="C:\Program Files\Bochs-3.0\VGABIOS-elpin-2.40"
+
+# Hard Drive ATA Controller (Geometry matches 5,160,960 bytes exactly)
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path="C:\Users\Basti\OneDrive\Bureau\Rust_OS\blog_os\target\x86_64-blog_os\debug\bootimage-blog_os.bin", mode=flat, cylinders=10, heads=16, spt=63, translation=lba
+
+# Boot order
+boot: disk
+
+# Logging and input
+log: bochsout.txt
+mouse: enabled=0

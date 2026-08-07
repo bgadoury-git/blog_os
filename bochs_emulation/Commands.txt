@@ -1,0 +1,6 @@
+Apply to the bin image before running the emulation :
+
+$file = "C:\Users\Basti\OneDrive\Bureau\Rust_OS\blog_os\target\x86_64-blog_os\debug\bootimage-blog_os.bin"
+$stream = [System.IO.File]::OpenWrite($file)
+$stream.SetLength(5160960)
+$stream.Close()
