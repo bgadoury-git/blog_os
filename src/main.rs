@@ -16,8 +16,6 @@ pub extern "C" fn _start() -> ! {
 
     blog_os::init();
 
-    x86_64::instructions::interrupts::int3();
-
     println!([Color::Red, Color::Black, true], "MAIN IS FINISHED!!!");
 
     #[cfg(test)]
