@@ -16,12 +16,11 @@ pub extern "C" fn _start() -> ! {
 
     blog_os::init();
 
-    println!([Color::Red, Color::Black, true], "MAIN IS FINISHED!!!");
-
     #[cfg(test)]
     test_main();
 
-    loop {}
+    loop {        use blog_os::print;
+        print!("-");}
 }
 
 /// This function is called on panic.
